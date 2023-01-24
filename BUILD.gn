@@ -2,6 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+import("//testing/libfuzzer/fuzzer_test.gni")
+
 config("flac_config") {
   defines = [ "FLAC__NO_DLL" ]
 }
@@ -135,5 +137,9 @@ source_set("flac") {
     ]
   } else {
     defines += [ "HAVE_INTTYPES_H" ]
+  }
+
+  if (use_fuzzing_engine) {
+    sources += [ "oss-fuzz/fuzzer_common.h" ]
   }
 }
