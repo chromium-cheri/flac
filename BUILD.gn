@@ -140,6 +140,9 @@ source_set("flac") {
   }
 
   if (use_fuzzing_engine) {
-    sources += [ "oss-fuzz/fuzzer_common.h" ]
+    sources += [
+      "oss-fuzz/fuzzer_common.c",
+      "oss-fuzz/fuzzer_common.h",
+    ]
   }
 }
